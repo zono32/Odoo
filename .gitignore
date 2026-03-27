@@ -1,0 +1,5 @@
+/odoo/
+/addons/
+/data/
+__pycache__/
+*.py[co]
