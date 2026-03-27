@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_fichapp_landing_page" model="ir.ui.view">
+        <field name="name">fichapp.landing.page</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <form string="Fichapp" create="false" edit="false" delete="false" class="o_fichapp_full">
+                <sheet>
+                    <div style="max-width: 1200px; margin: 0 auto; padding-top: 40px;">
+                        
+                        <div class="row align-items-center shadow-sm p-4 bg-white rounded" style="border: 1px solid #dee2e6; min-height: 200px;">
+                            
+                            <div class="col-lg-8 col-md-7">
+                                <h1 style="color: #003b5c; font-weight: bold; font-size: 2.5em;">Acceso a Fichapp</h1>
+                                <p style="font-size: 1.2em; color: #555; margin-top: 15px;">
+                                    Gestione su jornada laboral, vacaciones y contratos en nuestra plataforma externa. 
+                                    Toda la información está sincronizada con los módulos de RRHH de la compañía.
+                                </p>
+                                
+                                <div class="alert alert-info d-inline-flex align-items-center mt-3" style="border-radius: 50px; padding: 10px 25px;">
+                                    <i class="fa fa-lock fa-lg mr-3"/>
+                                    <strong>Importante:</strong>&amp;nbsp;Consulte sus credenciales de acceso con su responsable directo.
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-5 text-center">
+                                <a href="https://fichapp.vercel.app/" 
+                                   target="_blank" 
+                                   class="btn btn-primary btn-lg" 
+                                   style="background-color: #003b5c; border: none; padding: 25px; font-size: 1.5em; width: 100%; border-radius: 8px; box-shadow: 0 10px 20px rgba(0,59,92,0.2); display: block;">
+                                    <i class="fa fa-external-link-square mr-2"/> Abrir Fichapp
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row mt-5 pt-4 text-center">
+                            <div class="col-md-4">
+                                <div class="p-4">
+                                    <i class="fa fa-clock-o mb-3" style="font-size: 3.5em; color: #003b5c; opacity: 0.8;"/>
+                                    <h4 style="font-weight: bold;">Fichajes</h4>
+                                    <p class="text-muted">Registro preciso de entrada y salida con geolocalización.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-4 border-left border-right">
+                                    <i class="fa fa-calendar-check-o mb-3" style="font-size: 3.5em; color: #003b5c; opacity: 0.8;"/>
+                                    <h4 style="font-weight: bold;">Vacaciones</h4>
+                                    <p class="text-muted">Solicite sus días libres y consulte su saldo disponible.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-4">
+                                    <i class="fa fa-id-card-o mb-3" style="font-size: 3.5em; color: #003b5c; opacity: 0.8;"/>
+                                    <h4 style="font-weight: bold;">Contratos</h4>
+                                    <p class="text-muted">Acceso rápido a su documentación y contratos vigentes.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_fichapp_view" model="ir.actions.act_window">
+        <field name="name">Panel Fichapp</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_fichapp_landing_page"/>
+    </record>
+
+    <menuitem id="menu_fichapp_root" name="Fichapp" action="action_fichapp_view" sequence="1"/>
+</odoo>
