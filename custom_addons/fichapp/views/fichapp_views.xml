@@ -122,7 +122,7 @@
                                         <i class="fa fa-envelope mr-3" style="color: #003b5c; width: 20px;" />
                                         <span class="text-truncate">
                                             <strong>
-                                                <field name="login" readonly="1" />
+                                                <field name="email" readonly="1" />
                                             </strong>
                                         </span>
                                     </div>
