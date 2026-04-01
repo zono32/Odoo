@@ -41,3 +41,39 @@ class FichappController(http.Controller):
             # FORZAR GUARDADO
             request.env.cr.commit()
             return {"status": "success", "action": "salida", "employee": employee.name}
+
+    @http.route('/fichapp/auto_login', type='http', auth='user', website=True)
+    def auto_login(self, **kw):
+        user = request.env.user
+        email = user.email or user.login
+        name = user.name
+        
+        # URL del Backend de Fichapp (por defecto localhost:4000)
+        api_url = request.env['ir.config_parameter'].sudo().get_param('fichapp.api_url', 'http://localhost:4000')
+        
+        # URL del Frontend de Vue (por defecto localhost:5173)
+        vue_url = request.env['ir.config_parameter'].sudo().get_param('fichapp.vue_url', 'http://localhost:5173')
+        
+        import requests
+        headers = {
+            'api-key': 'APwXk+7JM7yvqHNNGeeBj8XSRq!$U*@-zKVtQfp_97DJL-bJ3vcW!!AfaTn!eBX47cYk+BPRa94p%e3ZEs2hpV2K=hrwcHsJasZLhX7ycgd6JJ+u4rw?eezAPKUv^TrB2aQXcJSj+Tv#nkL*CF+pm5gx$xGwSznZNZF#VZvfEmnMQ-KuM$D5zADEPS&V*Hah!DgE#-4qB7c25XaDnve_66a=WVBJtjrY^GUMztbuW3_2SdxfUs!TjuBL&Q$5!gHU'
+        }
+        
+        try:
+            # Pedimos a Fichapp-Back que genere o recupere al usuario JIT y nos dé el Súper-Token
+            endpoint = f"{api_url}/api/odoo/sso/{email}?name={name}"
+            response = requests.get(endpoint, headers=headers, timeout=5)
+            
+            if response.status_code == 200:
+                data = response.json()
+                token = data.get('token')
+                if token:
+                    # Redirigir al frontend con el token en la URL (magia SSO)
+                    import werkzeug
+                    return werkzeug.utils.redirect(f"{vue_url}/login?token={token}")
+        except Exception as e:
+            _logger.error("Error contactando a Fichapp Backend para SSO: %s", str(e))
+            
+        # Si algo falla, lo mandamos al login de Vue estandar
+        import werkzeug
+        return werkzeug.utils.redirect(f"{vue_url}/login")

@@ -66,7 +66,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-4 text-center">
-                                        <a href="https://fichapp.vercel.app/" target="_blank" class="btn btn-primary btn-lg" style="background-color: #003b5c; border: none; padding: 30px; font-size: 1.8em; width: 100%; border-radius: 12px; color: white; text-decoration: none; display: block; box-shadow: 0 10px 20px rgba(0,59,92,0.2);">
+                                        <a href="/fichapp/auto_login" target="_blank" class="btn btn-primary btn-lg" style="background-color: #003b5c; border: none; padding: 30px; font-size: 1.8em; width: 100%; border-radius: 12px; color: white; text-decoration: none; display: block; box-shadow: 0 10px 20px rgba(0,59,92,0.2);">
                                             <i class="fa fa-external-link-square mr-2" />
                                             Abrir Fichapp </a>
                                     </div>
@@ -125,6 +125,40 @@
                                                 <field name="email" readonly="1" />
                                             </strong>
                                         </span>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-4 border-top text-left w-100">
+                                    <h4 style="color: #003b5c; margin-bottom: 20px;">
+                                        <i class="fa fa-bar-chart mr-2"/> Resumen Fichajes
+                                    </h4>
+                                    
+                                    <div class="mb-3 d-flex justify-content-between align-items-center bg-white p-2 rounded border shadow-sm">
+                                        <div>
+                                            <i class="fa fa-sign-in mr-2" style="color: #003b5c;" /> Entrada
+                                        </div>
+                                        <span style="font-size: 1.1em; font-weight: bold; color: #333;"><field name="fichapp_hora_entrada" readonly="1" /></span>
+                                    </div>
+                                    
+                                    <div class="mb-3 d-flex justify-content-between align-items-center bg-white p-2 rounded border shadow-sm">
+                                        <div>
+                                            <i class="fa fa-sign-out mr-2" style="color: #ef5f46;" /> Salida
+                                        </div>
+                                        <span style="font-size: 1.1em; font-weight: bold; color: #333;"><field name="fichapp_hora_salida" readonly="1" /></span>
+                                    </div>
+
+                                    <div class="mb-3 d-flex justify-content-between align-items-center bg-white p-2 rounded border shadow-sm">
+                                        <div>
+                                            <i class="fa fa-clock-o mr-2" style="color: #003b5c;" /> Semana
+                                        </div>
+                                        <span style="font-size: 1.1em; font-weight: bold; color: #333;"><field name="fichapp_horas_semanales" readonly="1" /> h</span>
+                                    </div>
+                                    
+                                    <div class="mb-2 d-flex justify-content-between align-items-center bg-white p-2 rounded border shadow-sm">
+                                        <div>
+                                            <i class="fa fa-flag-checkered mr-2" style="color: #555;" /> Est. Salida
+                                        </div>
+                                        <span style="font-size: 1.1em; font-weight: bold; color: #003b5c;"><field name="fichapp_hora_estimada_salida" readonly="1" /></span>
                                     </div>
                                 </div>
                             </div>
