@@ -7,6 +7,7 @@
     "depends": ["base", "hr"],
     "data": [
         "views/fichapp_views.xml",
+        "views/res_users_sync_view.xml",
     ],
     "installable": True,
     "application": True,

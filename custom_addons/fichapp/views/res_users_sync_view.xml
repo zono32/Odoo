@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_form_fichapp_sync" model="ir.ui.view">
+        <field name="name">res.users.form.fichapp.sync</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Fichapp Sync" groups="base.group_system">
+                    <header>
+                        <button name="action_fichapp_sync" 
+                                string="Sincronizar con Fichapp" 
+                                type="object" 
+                                class="oe_highlight"
+                                icon="fa-refresh"/>
+                    </header>
+                    <group>
+                        <group string="Configuración de Perfil en Fichapp">
+                            <field name="fichapp_sync_locality"/>
+                            <field name="fichapp_sync_contract"/>
+                            <field name="fichapp_sync_role"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert" style="margin-top: 10px;">
+                        <i class="fa fa-info-circle mr-2"/>
+                        Use esta sección para configurar cómo se creará o actualizará este usuario en Fichapp. 
+                        Asegúrese de que el email del usuario sea correcto.
+                    </div>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
